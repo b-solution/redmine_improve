@@ -1,0 +1,9 @@
+<% if @issue.status.is_closed? and @issue.parent_id %>
+    <script>
+      $('#issue_status_id').parents('p').after('<p id="checkbox_issue_parent" "hidden"  >' +
+          '<label> Close parent issue and subtasks</label>' +
+          '<%= check_box_tag :close_parent_issue %>' +
+          '</p>')
+    </script>
+
+<% end %>
