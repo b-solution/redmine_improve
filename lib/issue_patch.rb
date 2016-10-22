@@ -9,9 +9,18 @@ module SubtasksInherited
           #   issue.status_id = self.status_id
           #   issue.save
           # end
-          self.self_and_descendants.update_all(status_id: self.status_id )
-        end
+
+            self.update_children_to_closed(self.status_id)
+
+          end
       end
+
+        def update_children_to_closed(status)
+          self.children.each do |i|
+            i.update_children_to_closed(status)
+            i.update(status_id: status )
+          end
+        end
     end
 
     def self.included(receiver)
