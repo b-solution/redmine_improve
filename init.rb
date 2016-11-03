@@ -19,6 +19,7 @@ class Hooks < Redmine::Hook::ViewListener
   #   :f      => the form object to create additional fields
 
   render_on :view_issues_form_details_bottom, :partial=> 'issues/check_box_close'
+  render_on :view_issues_show_extra_details_bottom, :partial=> 'issues/show_details'
 
   def controller_issues_edit_after_save(context={})
     params = context[:params]

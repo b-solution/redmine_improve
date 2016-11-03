@@ -1,0 +1,10 @@
+<% if @issue.journals.present? %>
+    <% j = @issue.journals.last %>
+    <div class="<%= @issue.css_classes %> details">
+
+      <strong>
+        <div class="label" for="last_updated">Last updated by <%= link_to_user j.user %>, <%= format_time(j.created_on) %></div>
+      </strong>
+    </div>
+
+<% end %>
